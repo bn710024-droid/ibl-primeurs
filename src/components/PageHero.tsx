@@ -31,7 +31,14 @@ export default function PageHero({ eyebrow, title, description, imageSrc, videoS
           className="absolute inset-0 h-full w-full object-cover"
         />
       ) : imageSrc ? (
-        <img src={imageSrc} alt="" className="absolute inset-0 h-full w-full object-cover" />
+        <img
+          src={imageSrc}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+        />
       ) : null}
       {hasMedia && (
         <div className={`absolute inset-0 ${videoSrc ? 'bg-ink-950/35' : 'bg-ink-950/70'}`} />

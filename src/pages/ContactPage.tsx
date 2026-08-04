@@ -1,13 +1,16 @@
 import { useState, type FormEvent } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import PageHero from '../components/PageHero'
-import coverPhoto from '../assets/images/cover-contact-watermelon.jpeg'
+import coverPhoto from '../assets/images/cover-contact-watermelon.webp'
+import { useSEO } from '../lib/useSEO'
+import { submitQuoteRequest } from '../lib/quoteRequest'
 
 const PRODUCT_OPTIONS = ['Mangue', 'Haricot vert', 'Gombo', 'Piment', 'Citrons & Limes', 'Autre']
 
 const INFO_CARDS = [
   {
     title: 'Adresse',
-    lines: ['Dakar, Sénégal'],
+    lines: ['Camberène, Kawsara', 'Dakar, Sénégal'],
     icon: (
       <path
         strokeLinecap="round"
@@ -18,7 +21,7 @@ const INFO_CARDS = [
   },
   {
     title: 'Téléphone',
-    lines: ['+221 XX XXX XX XX', 'Disponible du lundi au vendredi'],
+    lines: ['+221 77 525 60 15', 'Disponible du lundi au vendredi'],
     icon: (
       <path
         strokeLinecap="round"
@@ -29,7 +32,7 @@ const INFO_CARDS = [
   },
   {
     title: 'Email',
-    lines: ['contact@iblprimeurs.sn', 'Réponse rapide'],
+    lines: ['contact@iblprimeurs.com', 'Réponse rapide'],
     icon: (
       <path
         strokeLinecap="round"
@@ -59,6 +62,18 @@ const FAQ = [
 ]
 
 export default function ContactPage() {
+  useSEO({
+    title: 'Contact — Demander un devis',
+    description:
+      "Contactez IBL Primeurs à Dakar pour vos besoins d'approvisionnement en fruits et légumes frais. Réponse sous 24h ouvrées pour toute demande de devis.",
+    path: '/contact',
+    image: coverPhoto,
+  })
+
+  const [searchParams] = useSearchParams()
+  const preselectedProduct = searchParams.get('produit')
+  const hasPreselectedProduct = Boolean(preselectedProduct && PRODUCT_OPTIONS.includes(preselectedProduct))
+
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -67,9 +82,11 @@ export default function ContactPage() {
     email: '',
     phone: '',
     quantity: '',
-    message: '',
+    message: hasPreselectedProduct
+      ? `Bonjour, je souhaite recevoir la fiche technique et un devis pour : ${preselectedProduct}.`
+      : '',
   })
-  const [products, setProducts] = useState<string[]>([])
+  const [products, setProducts] = useState<string[]>(() => (hasPreselectedProduct ? [preselectedProduct!] : []))
   const [isSubmitted, setIsSubmitted] = useState(false)
 
   const toggleProduct = (product: string) => {
@@ -78,18 +95,26 @@ export default function ContactPage() {
     )
   }
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    const subject = encodeURIComponent(`Demande de devis — ${formData.company || formData.name}`)
-    const body = encodeURIComponent(
-      `Nom : ${formData.name}\nSociété : ${formData.company}\nFonction : ${formData.role}\nPays : ${formData.country}\nEmail : ${formData.email}\nTéléphone / WhatsApp : ${formData.phone}\nProduit(s) recherché(s) : ${products.join(', ')}\nQuantité estimée : ${formData.quantity}\n\nMessage :\n${formData.message}`,
-    )
-    window.location.href = `mailto:contact@iblprimeurs.sn?subject=${subject}&body=${body}`
+    await submitQuoteRequest({ ...formData, products })
     setIsSubmitted(true)
   }
 
   return (
     <>
+      <a
+        href="https://wa.me/221775256015?text=Bonjour%2C%20je%20souhaite%20obtenir%20des%20informations%20sur%20vos%20produits."
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Contacter IBL Primeurs sur WhatsApp"
+        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-clay-500 text-ink-950 shadow-[0_12px_30px_-8px_rgba(18,53,36,0.5)] transition-transform duration-200 hover:scale-105 hover:bg-clay-600"
+      >
+        <svg viewBox="0 0 24 24" fill="currentColor" className="h-7 w-7" aria-hidden="true">
+          <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.77.46 3.45 1.35 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2m0 18.13a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.17 8.17 0 0 1-1.26-4.36c0-4.53 3.7-8.22 8.24-8.22 2.2 0 4.27.86 5.82 2.42a8.17 8.17 0 0 1 2.41 5.82c0 4.54-3.7 8.22-8.23 8.22m4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.24-.64.8-.78.97-.14.16-.29.18-.53.06-.25-.12-1.05-.39-2-1.23a7.5 7.5 0 0 1-1.38-1.72c-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.24-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.23.25-.86.84-.86 2.04 0 1.2.88 2.36 1 2.52.12.16 1.73 2.64 4.2 3.7.59.25 1.05.4 1.4.51.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.28" />
+        </svg>
+      </a>
+
       <PageHero
         eyebrow="Contact"
         title="Construisons un partenariat durable"
@@ -115,7 +140,7 @@ export default function ContactPage() {
                   {card.icon}
                 </svg>
               </div>
-              <h3 className="font-display text-base font-bold text-ink-950">{card.title}</h3>
+              <h2 className="font-display text-base font-bold text-ink-950">{card.title}</h2>
               {card.lines.map((line) => (
                 <p key={line} className="mt-1 text-sm text-ink-700">{line}</p>
               ))}
@@ -285,17 +310,17 @@ export default function ContactPage() {
             Localisation
           </p>
           <h2 className="font-display text-3xl font-bold text-ink-950 sm:text-4xl">
-            Basés à Dakar
+            Basés à Camberène, Dakar
           </h2>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-700">
-            Basés à Dakar, nous accompagnons des partenaires internationaux
-            dans leurs projets d'approvisionnement en fruits et légumes
-            frais.
+            Basés à Camberène, quartier Kawsara, à Dakar, nous accompagnons
+            des partenaires internationaux dans leurs projets
+            d'approvisionnement en fruits et légumes frais.
           </p>
           <div className="mt-8 aspect-[16/9] w-full overflow-hidden rounded-lg border border-ink-950/10">
             <iframe
-              title="Localisation IBL Primeurs — Dakar, Sénégal"
-              src="https://www.google.com/maps?q=Dakar,Senegal&output=embed"
+              title="Localisation IBL Primeurs — Camberène, Dakar, Sénégal"
+              src="https://www.google.com/maps?q=Camberene+Kawsara,Dakar,Senegal&output=embed"
               className="h-full w-full"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

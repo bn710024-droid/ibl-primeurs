@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import presentationPhoto from '../assets/images/presentation-producteur.jpeg'
+import presentationPhoto from '../assets/images/presentation-producteur.webp'
 
 export default function Presentation() {
   return (
@@ -16,6 +16,8 @@ export default function Presentation() {
           src={presentationPhoto}
           alt="Producteur partenaire d'IBL Primeurs récoltant des haricots verts"
           className="relative z-10 aspect-[3/4] w-full rounded-[22px] object-cover shadow-[0_20px_45px_-20px_rgba(18,53,36,0.35)] lg:-mt-28 lg:aspect-[4/3]"
+          loading="lazy"
+          decoding="async"
         />
 
         <div>

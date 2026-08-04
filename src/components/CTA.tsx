@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import ctaPhoto from '../assets/images/cta-conteneur.jpeg'
+import ctaPhoto from '../assets/images/cta-conteneur.webp'
 
 interface CTAProps {
   title?: string
@@ -18,6 +18,8 @@ export default function CTA({
         src={ctaPhoto}
         alt="Chargement d'un conteneur d'export IBL Primeurs"
         className="absolute inset-0 h-full w-full object-cover"
+        loading="lazy"
+        decoding="async"
       />
       <div className="absolute inset-0 bg-ink-950/75" />
 

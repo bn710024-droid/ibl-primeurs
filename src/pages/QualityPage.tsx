@@ -1,11 +1,12 @@
 import PageHero from '../components/PageHero'
 import CTA from '../components/CTA'
-import tableTriPhoto from '../assets/images/quality-table-tri.jpeg'
-import entrepotFrigoPhoto from '../assets/images/quality-entrepot-frigorifique.jpeg'
-import inspectionManguesPhoto from '../assets/images/quality-inspection-mangues.jpeg'
-import globalGapLogo from '../assets/images/logo-globalgap.png'
-import graspLogo from '../assets/images/logo-grasp.jpg'
-import coverPhoto from '../assets/images/cover-qualite-haricots.jpeg'
+import tableTriPhoto from '../assets/images/quality-table-tri.webp'
+import entrepotFrigoPhoto from '../assets/images/quality-entrepot-frigorifique.webp'
+import inspectionManguesPhoto from '../assets/images/quality-inspection-mangues.webp'
+import globalGapLogo from '../assets/images/logo-globalgap.webp'
+import graspLogo from '../assets/images/logo-grasp.webp'
+import coverPhoto from '../assets/images/cover-qualite-haricots.webp'
+import { useSEO } from '../lib/useSEO'
 
 const PILLARS = [
   {
@@ -63,6 +64,14 @@ const CERTIFICATIONS = [
 ]
 
 export default function QualityPage() {
+  useSEO({
+    title: 'Qualité & certifications GlobalG.A.P.',
+    description:
+      'Traçabilité, contrôle qualité et certifications GlobalG.A.P. et GRASP : découvrez notre démarche qualité, de la sélection des producteurs jusqu\'à l\'expédition.',
+    path: '/qualite',
+    image: coverPhoto,
+  })
+
   return (
     <>
       <PageHero
@@ -110,6 +119,8 @@ export default function QualityPage() {
             src={inspectionManguesPhoto}
             alt="Mangues fraîchement récoltées prêtes pour inspection chez IBL Primeurs"
             className="aspect-[4/3] w-full rounded-[22px] object-cover shadow-[0_20px_45px_-20px_rgba(18,53,36,0.35)]"
+            loading="lazy"
+            decoding="async"
           />
         </div>
       </section>
@@ -141,6 +152,8 @@ export default function QualityPage() {
             src={tableTriPhoto}
             alt="Table de tri et contrôle qualité des haricots verts chez IBL Primeurs"
             className="mt-12 aspect-[21/9] w-full rounded-[22px] object-cover shadow-[0_20px_45px_-20px_rgba(18,53,36,0.35)]"
+            loading="lazy"
+            decoding="async"
           />
         </div>
       </section>
@@ -151,6 +164,8 @@ export default function QualityPage() {
             src={entrepotFrigoPhoto}
             alt="Entrepôt frigorifique d'IBL Primeurs avec cartons de mangues"
             className="aspect-[4/3] w-full order-last rounded-[22px] object-cover shadow-[0_20px_45px_-20px_rgba(18,53,36,0.35)] lg:order-first"
+            loading="lazy"
+            decoding="async"
           />
           <div>
             <p className="mb-3 font-display text-sm font-bold uppercase tracking-wide text-clay-500">
@@ -197,10 +212,10 @@ export default function QualityPage() {
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-6 border-t border-paper-50/10 pt-8">
             <div className="flex h-20 w-36 items-center justify-center rounded-lg bg-paper-50 p-3">
-              <img src={globalGapLogo} alt="Logo GlobalG.A.P." className="h-full w-full object-contain" />
+              <img src={globalGapLogo} alt="Logo GlobalG.A.P." className="h-full w-full object-contain" loading="lazy" decoding="async" />
             </div>
             <div className="flex h-20 w-36 items-center justify-center rounded-lg bg-paper-50 p-3">
-              <img src={graspLogo} alt="Logo GRASP" className="h-full w-full object-contain" />
+              <img src={graspLogo} alt="Logo GRASP" className="h-full w-full object-contain" loading="lazy" decoding="async" />
             </div>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import PageHero from '../components/PageHero'
 import MarketsMap from '../components/MarketsMap'
 import CTA from '../components/CTA'
+import { useSEO } from '../lib/useSEO'
 
 const REGIONS = [
   {
@@ -29,6 +30,13 @@ const SHIPPING = [
 ]
 
 export default function MarketsPage() {
+  useSEO({
+    title: "Nos marchés export — Europe, Maghreb, Afrique de l'Ouest",
+    description:
+      "IBL Primeurs exporte ses fruits et légumes frais vers l'Union Européenne, le Maroc, le Maghreb et l'Afrique de l'Ouest, avec une logistique maritime et aérienne adaptée.",
+    path: '/marches',
+  })
+
   return (
     <>
       <PageHero

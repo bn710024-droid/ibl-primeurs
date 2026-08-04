@@ -18,7 +18,11 @@ const DESTINATION_NAMES = new Set([
 
 export default function MarketsMap() {
   return (
-    <div className="relative overflow-hidden rounded-[22px] bg-paper-100 p-4 shadow-[0_20px_45px_-20px_rgba(18,53,36,0.2)] sm:p-6">
+    <div
+      className="relative overflow-hidden rounded-[22px] bg-paper-100 p-4 shadow-[0_20px_45px_-20px_rgba(18,53,36,0.2)] sm:p-6"
+      role="img"
+      aria-label="Carte du monde situant le Sénégal, pays d'origine, et ses marchés d'exportation en Europe, au Maroc, au Maghreb et en Afrique de l'Ouest"
+    >
       <ComposableMap
         projectionConfig={{ scale: 148, center: [10, 15] }}
         className="w-full"

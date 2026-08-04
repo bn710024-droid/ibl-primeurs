@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import manguePhoto from '../assets/images/product-mangue.webp'
 import haricotVertPhoto from '../assets/images/product-haricot-vert.avif'
-import gomboPhoto from '../assets/images/product-gombo.jpeg'
+import gomboPhoto from '../assets/images/product-gombo.webp'
 import pimentPhoto from '../assets/images/product-piment.avif'
-import citronsLimesPhoto from '../assets/images/product-citrons-limes.jpeg'
+import citronsLimesPhoto from '../assets/images/product-citrons-limes.webp'
 
 const PRODUCTS = [
   { name: 'Mangue', photo: manguePhoto },
@@ -44,6 +44,8 @@ export default function ProductsTeaser() {
                 src={product.photo}
                 alt={product.name}
                 className="aspect-square w-full rounded-[22px] object-cover shadow-[0_20px_45px_-20px_rgba(18,53,36,0.35)]"
+                loading="lazy"
+                decoding="async"
               />
               <p className="mt-3 text-center font-display text-base font-semibold text-ink-950">
                 {product.name}

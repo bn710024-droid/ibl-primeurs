@@ -82,7 +82,7 @@ export default function Header() {
           type="button"
           onClick={() => setIsMenuOpen((v) => !v)}
           className={`flex flex-col gap-1.5 p-2 lg:hidden ${isScrolled ? 'text-ink-950' : 'text-paper-50'}`}
-          aria-label="Ouvrir le menu"
+          aria-label={isMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
           aria-expanded={isMenuOpen}
         >
           <span className={`h-0.5 w-6 bg-current transition-transform ${isMenuOpen ? 'translate-y-2 rotate-45' : ''}`} />

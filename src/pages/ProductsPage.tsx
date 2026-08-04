@@ -1,11 +1,13 @@
+import { Link } from 'react-router-dom'
 import PageHero from '../components/PageHero'
 import CTA from '../components/CTA'
-import manguePhoto from '../assets/images/page-produits-mangue.jpeg'
-import haricotVertPhoto from '../assets/images/page-produits-haricot-vert.jpeg'
-import gomboPhoto from '../assets/images/page-produits-gombo.jpeg'
-import pimentPhoto from '../assets/images/page-produits-piment.jpeg'
-import citronsLimesPhoto from '../assets/images/page-produits-citrons-limes.jpeg'
-import coverPhoto from '../assets/images/cover-produits-pineapple.jpeg'
+import manguePhoto from '../assets/images/page-produits-mangue.webp'
+import haricotVertPhoto from '../assets/images/page-produits-haricot-vert.webp'
+import gomboPhoto from '../assets/images/page-produits-gombo.webp'
+import pimentPhoto from '../assets/images/page-produits-piment.webp'
+import citronsLimesPhoto from '../assets/images/page-produits-citrons-limes.webp'
+import coverPhoto from '../assets/images/cover-produits-pineapple.webp'
+import { useSEO } from '../lib/useSEO'
 
 const PRODUCTS = [
   {
@@ -58,6 +60,14 @@ const REASONS = [
 ]
 
 export default function ProductsPage() {
+  useSEO({
+    title: 'Nos produits — Mangue, haricot vert, gombo, piment',
+    description:
+      "Découvrez la sélection de fruits et légumes frais d'IBL Primeurs : mangues, haricots verts, gombo, piments, citrons et limes, préparés pour l'export international.",
+    path: '/produits',
+    image: coverPhoto,
+  })
+
   return (
     <>
       <PageHero
@@ -81,6 +91,8 @@ export default function ProductsPage() {
                   src={product.photo}
                   alt={product.name}
                   className="aspect-[4/3] w-full rounded-[22px] object-cover shadow-[0_20px_45px_-20px_rgba(18,53,36,0.35)]"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div>
                   <h2 className="font-display text-2xl font-bold text-ink-950 sm:text-3xl">
@@ -100,12 +112,12 @@ export default function ProductsPage() {
                       ))}
                     </div>
                   )}
-                  <a
-                    href="/contact"
+                  <Link
+                    to={`/contact?produit=${encodeURIComponent(product.name)}#devis`}
                     className="mt-6 inline-flex rounded-lg border border-ink-950 px-6 py-3 text-sm font-semibold text-ink-950 transition-colors hover:bg-ink-950 hover:text-paper-50"
                   >
                     Demander la fiche technique
-                  </a>
+                  </Link>
                 </div>
               </div>
             ))}

@@ -71,15 +71,15 @@ export default function Footer() {
               Contact
             </p>
             <ul className="mt-5 flex flex-col gap-3 text-sm text-paper-100/55">
-              <li>Dakar, Sénégal</li>
+              <li>Camberène, Kawsara — Dakar, Sénégal</li>
               <li>
-                <a href="mailto:contact@iblprimeurs.sn" className="transition-colors hover:text-clay-400">
-                  contact@iblprimeurs.sn
+                <a href="mailto:contact@iblprimeurs.com" className="transition-colors hover:text-clay-400">
+                  contact@iblprimeurs.com
                 </a>
               </li>
               <li>
-                <a href="tel:+221000000000" className="transition-colors hover:text-clay-400">
-                  +221 00 000 00 00
+                <a href="tel:+221775256015" className="transition-colors hover:text-clay-400">
+                  +221 77 525 60 15
                 </a>
               </li>
               <li>

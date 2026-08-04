@@ -14,7 +14,7 @@ export default function KeyFigures() {
             key={figure.title}
             className={`border-paper-50/10 px-8 py-10 ${index > 0 ? 'border-t sm:border-t-0 sm:border-l' : ''}`}
           >
-            <h3 className="font-display text-lg font-semibold text-paper-50">{figure.title}</h3>
+            <h2 className="font-display text-lg font-semibold text-paper-50">{figure.title}</h2>
             <p className="mt-2 text-sm leading-relaxed text-paper-100/55">{figure.description}</p>
           </div>
         ))}

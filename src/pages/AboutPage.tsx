@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion'
 import PageHero from '../components/PageHero'
 import CTA from '../components/CTA'
-import aboutParcoursPhoto from '../assets/images/about-parcours.jpeg'
-import aboutEquipePhoto from '../assets/images/about-equipe.jpeg'
-import coverPhoto from '../assets/images/cover-apropos-mangotree.jpeg'
-import talayBoxPhoto from '../assets/images/talay-mango-box.png'
+import aboutParcoursPhoto from '../assets/images/about-parcours.webp'
+import aboutEquipePhoto from '../assets/images/about-equipe.webp'
+import coverPhoto from '../assets/images/cover-apropos-mangotree.webp'
+import talayBoxPhoto from '../assets/images/talay-mango-box.webp'
+import { useSEO } from '../lib/useSEO'
 
 const VALUES = [
   { title: 'Exigence', description: "Un contrôle qualité rigoureux à chaque étape, de la récolte à l'expédition." },
@@ -14,6 +15,14 @@ const VALUES = [
 ]
 
 export default function AboutPage() {
+  useSEO({
+    title: "À propos — Notre histoire depuis 1994",
+    description:
+      "Depuis 1994, IBL Primeurs accompagne les importateurs internationaux avec des fruits et légumes frais du Sénégal. Découvrez notre parcours, nos valeurs et notre marque Talay Afric Mango.",
+    path: '/a-propos',
+    image: coverPhoto,
+  })
+
   return (
     <>
       <PageHero
@@ -35,6 +44,8 @@ export default function AboutPage() {
             src={aboutParcoursPhoto}
             alt="Producteur partenaire d'IBL Primeurs dans son champ au Sénégal"
             className="aspect-[4/3] w-full order-last rounded-[22px] object-cover shadow-[0_20px_45px_-20px_rgba(18,53,36,0.35)] lg:order-first"
+            loading="lazy"
+            decoding="async"
           />
           <div>
             <p className="mb-3 font-display text-sm font-bold uppercase tracking-wide text-clay-500">
@@ -108,6 +119,8 @@ export default function AboutPage() {
             src={aboutEquipePhoto}
             alt="Équipe d'IBL Primeurs lors de la récolte au champ"
             className="mt-10 aspect-[21/9] w-full rounded-[22px] object-cover shadow-[0_20px_45px_-20px_rgba(18,53,36,0.35)]"
+            loading="lazy"
+            decoding="async"
           />
         </div>
       </section>
@@ -119,14 +132,17 @@ export default function AboutPage() {
               Notre marque
             </p>
             <h2 className="font-display text-3xl font-bold text-paper-50 sm:text-4xl">
-              Talay Afric Mango, notre signature à l'export
+              Talay, notre signature à l'export
             </h2>
+            <p className="mt-3 font-display text-sm font-semibold uppercase tracking-wide text-clay-400">
+              African Mango
+            </p>
             <div className="mt-5 flex flex-col gap-4">
               <p className="text-base leading-relaxed text-paper-100/70">
                 Pour porter notre exigence sur les marchés internationaux, nous
-                avons créé notre propre marque : Talay Afric Mango. Elle
-                incarne notre engagement envers une sélection rigoureuse et une
-                qualité constante, du verger jusqu'à la livraison.
+                avons créé notre propre marque : Talay. Elle incarne notre
+                engagement envers une sélection rigoureuse et une qualité
+                constante, du verger jusqu'à la livraison.
               </p>
               <p className="text-base leading-relaxed text-paper-100/70">
                 Chaque carton exporté sous cette marque reflète notre
@@ -137,8 +153,12 @@ export default function AboutPage() {
           </div>
           <img
             src={talayBoxPhoto}
-            alt="Carton d'export Talay Afric Mango d'IBL Primeurs rempli de mangues"
+            alt="Carton d'export Talay d'IBL Primeurs rempli de mangues"
             className="w-full object-contain"
+            width={1535}
+            height={1024}
+            loading="lazy"
+            decoding="async"
           />
         </div>
       </section>

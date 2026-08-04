@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import heroFarmlandPhoto from '../assets/images/hero-farmland.jpeg'
+import heroFarmlandPhoto from '../assets/images/hero-farmland.webp'
 
 export default function Hero() {
   return (
@@ -8,6 +8,9 @@ export default function Hero() {
         src={heroFarmlandPhoto}
         alt="Terres agricoles au Sénégal, origine des produits IBL Primeurs"
         className="absolute inset-0 h-full w-full object-cover"
+        loading="eager"
+        fetchPriority="high"
+        decoding="async"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/55 to-ink-950/10" />
 
