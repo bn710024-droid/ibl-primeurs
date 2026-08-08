@@ -125,6 +125,25 @@ export default function ProductsPage() {
         </div>
       </section>
 
+      <section className="px-6 pb-28 lg:px-10 lg:pb-36">
+        <div className="mx-auto max-w-3xl rounded-[28px] bg-paper-100 px-8 py-14 text-center lg:px-14">
+          <h2 className="font-display text-2xl font-bold text-ink-950 sm:text-3xl">
+            Vous recherchez un autre produit ?
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-ink-700">
+            Cette sélection ne couvre pas l'ensemble de notre offre. Grâce à notre réseau de
+            producteurs partenaires au Sénégal, nous pouvons également sourcer d'autres fruits
+            et légumes frais selon vos besoins spécifiques.
+          </p>
+          <Link
+            to="/contact#devis"
+            className="mt-8 inline-flex rounded-lg bg-clay-500 px-7 py-3.5 text-sm font-semibold text-ink-950 shadow-sm transition-colors duration-200 hover:bg-clay-600"
+          >
+            Nous contacter
+          </Link>
+        </div>
+      </section>
+
       <section className="bg-ink-950 px-6 py-28 lg:px-10 lg:py-36">
         <div className="mx-auto max-w-4xl">
           <h2 className="text-center font-display text-3xl font-bold text-paper-50 sm:text-4xl">
