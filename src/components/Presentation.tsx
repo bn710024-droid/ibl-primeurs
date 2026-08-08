@@ -10,12 +10,14 @@ export default function Presentation() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-16"
+        className="mx-auto grid max-w-7xl items-center gap-12 overflow-hidden lg:grid-cols-2 lg:gap-16"
       >
         <img
           src={presentationPhoto}
           alt="Producteur partenaire d'IBL Primeurs récoltant des haricots verts"
           className="relative z-10 aspect-[3/4] w-full rounded-[22px] object-cover shadow-[0_20px_45px_-20px_rgba(18,53,36,0.35)] lg:-mt-28 lg:aspect-[4/3]"
+          width={1280}
+          height={1707}
           loading="lazy"
           decoding="async"
         />
