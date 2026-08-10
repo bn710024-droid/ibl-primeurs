@@ -9,6 +9,7 @@ const NAV_COLUMNS = [
       { label: 'Produits', to: '/produits' },
       { label: 'Qualité', to: '/qualite' },
       { label: 'Marchés', to: '/marches' },
+      { label: 'Galerie', to: '/galerie' },
     ],
   },
 ]
