@@ -19,11 +19,8 @@ import productPimentPhoto from '../assets/images/product-piment.avif'
 import productCitronsPhoto from '../assets/images/product-citrons-limes.webp'
 import talayBoxPhoto from '../assets/images/talay-mango-box.webp'
 import euMangue01 from '../assets/images/gallery-eu-mangue-01.webp'
-import euMangue02 from '../assets/images/gallery-eu-mangue-02.webp'
 import euMangue03 from '../assets/images/gallery-eu-mangue-03.webp'
 import euMangue04 from '../assets/images/gallery-eu-mangue-04.webp'
-import euMangue05 from '../assets/images/gallery-eu-mangue-05.webp'
-import euMangue06 from '../assets/images/gallery-eu-mangue-06.webp'
 import euMangue07 from '../assets/images/gallery-eu-mangue-07.webp'
 import marocMangue01 from '../assets/images/gallery-maroc-mangue-01.webp'
 import marocMangue02 from '../assets/images/gallery-maroc-mangue-02.webp'
@@ -67,11 +64,8 @@ const IMAGES: GalleryImage[] = [
   { src: productCitronsPhoto, alt: 'Citrons et limes frais préparés pour export', category: 'Nos produits', width: 702, height: 1280 },
   { src: talayBoxPhoto, alt: 'Carton de mangues de la marque Talay', category: 'Nos produits', width: 1535, height: 1024 },
   { src: euMangue01, alt: 'Cartons de mangues conditionnés pour export vers l’Union européenne', category: 'Union européenne', width: 765, height: 1020 },
-  { src: euMangue02, alt: 'Mangues triées et calibrées pour le marché européen', category: 'Union européenne', width: 765, height: 1020 },
   { src: euMangue03, alt: 'Cartons de mangues empilés prêts pour expédition vers l’Europe', category: 'Union européenne', width: 765, height: 1020 },
   { src: euMangue04, alt: 'Contrôle des cartons de mangues avant export vers l’Union européenne', category: 'Union européenne', width: 765, height: 1020 },
-  { src: euMangue05, alt: 'Mangues fraîches conditionnées pour le marché européen', category: 'Union européenne', width: 765, height: 1020 },
-  { src: euMangue06, alt: 'Palettes de cartons de mangues prêtes pour l’Union européenne', category: 'Union européenne', width: 765, height: 1020 },
   { src: euMangue07, alt: 'Équipe préparant les cartons de mangues pour export vers l’Union européenne', category: 'Union européenne', width: 765, height: 1020 },
   { src: marocMangue01, alt: 'Cartons de mangues empilés en chambre froide pour export vers le Maroc', category: 'Maroc', width: 1200, height: 675 },
   { src: marocMangue02, alt: 'Palettes de cartons de mangues préparées pour expédition vers le Maroc', category: 'Maroc', width: 720, height: 1280 },
