@@ -25,6 +25,13 @@ import euMangue04 from '../assets/images/gallery-eu-mangue-04.webp'
 import euMangue05 from '../assets/images/gallery-eu-mangue-05.webp'
 import euMangue06 from '../assets/images/gallery-eu-mangue-06.webp'
 import euMangue07 from '../assets/images/gallery-eu-mangue-07.webp'
+import marocMangue01 from '../assets/images/gallery-maroc-mangue-01.webp'
+import marocMangue02 from '../assets/images/gallery-maroc-mangue-02.webp'
+import marocMangue03 from '../assets/images/gallery-maroc-mangue-03.webp'
+import marocMangue04 from '../assets/images/gallery-maroc-mangue-04.webp'
+import marocMangue05 from '../assets/images/gallery-maroc-mangue-05.webp'
+import marocMangue06 from '../assets/images/gallery-maroc-mangue-06.webp'
+import marocMangue07 from '../assets/images/gallery-maroc-mangue-07.webp'
 import coverPhoto from '../assets/images/cover-apropos-mangotree.webp'
 
 interface GalleryImage {
@@ -57,6 +64,13 @@ const IMAGES: GalleryImage[] = [
   { src: euMangue05, alt: 'Mangues fraîches conditionnées pour le marché européen', category: 'Union européenne', width: 765, height: 1020 },
   { src: euMangue06, alt: 'Palettes de cartons de mangues prêtes pour l’Union européenne', category: 'Union européenne', width: 765, height: 1020 },
   { src: euMangue07, alt: 'Équipe préparant les cartons de mangues pour export vers l’Union européenne', category: 'Union européenne', width: 765, height: 1020 },
+  { src: marocMangue01, alt: 'Cartons de mangues empilés en chambre froide pour export vers le Maroc', category: 'Maroc', width: 1200, height: 675 },
+  { src: marocMangue02, alt: 'Palettes de cartons de mangues préparées pour expédition vers le Maroc', category: 'Maroc', width: 720, height: 1280 },
+  { src: marocMangue03, alt: 'Mangues sélectionnées en caisse pour le marché marocain', category: 'Maroc', width: 960, height: 1280 },
+  { src: marocMangue04, alt: 'Contrôle des mangues avant conditionnement pour le Maroc', category: 'Maroc', width: 960, height: 1280 },
+  { src: marocMangue05, alt: 'Rangée de cartons de mangues prêts pour export vers le Maroc', category: 'Maroc', width: 960, height: 1280 },
+  { src: marocMangue06, alt: 'Cartons de mangues conditionnés pour le marché marocain', category: 'Maroc', width: 1200, height: 900 },
+  { src: marocMangue07, alt: 'Cartons de mangues sur palette prêts pour expédition vers le Maroc', category: 'Maroc', width: 1200, height: 900 },
 ]
 
 export default function GalleryPage() {
