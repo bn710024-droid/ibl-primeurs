@@ -42,6 +42,15 @@ interface GalleryImage {
   height: number
 }
 
+const CATEGORY_DESCRIPTIONS: Record<string, string> = {
+  'Nos terres': "Les vergers et champs de nos producteurs partenaires, à l'origine de chaque récolte.",
+  'Notre équipe': "Les femmes et les hommes qui accompagnent chaque étape, du champ jusqu'à l'expédition.",
+  'Qualité & logistique': 'Contrôle, tri et conditionnement : notre exigence à chaque étape avant expédition.',
+  'Nos produits': "Un aperçu de nos fruits et légumes frais préparés pour l'export.",
+  'Union européenne': "Nos mangues conditionnées, calibrées et contrôlées pour l'expédition vers le marché européen.",
+  'Maroc': "Nos mangues préparées et conditionnées pour l'export vers le marché marocain.",
+}
+
 const IMAGES: GalleryImage[] = [
   { src: heroFarmlandPhoto, alt: 'Terres agricoles au Sénégal, origine des produits IBL Primeurs', category: 'Nos terres', width: 500, height: 334 },
   { src: presentationPhoto, alt: "Producteur partenaire d'IBL Primeurs récoltant des haricots verts", category: 'Nos terres', width: 576, height: 1024 },
@@ -72,6 +81,12 @@ const IMAGES: GalleryImage[] = [
   { src: marocMangue06, alt: 'Cartons de mangues conditionnés pour le marché marocain', category: 'Maroc', width: 1200, height: 900 },
   { src: marocMangue07, alt: 'Cartons de mangues sur palette prêts pour expédition vers le Maroc', category: 'Maroc', width: 1200, height: 900 },
 ]
+
+const CATEGORIES = Array.from(new Set(IMAGES.map((image) => image.category))).map((category) => ({
+  title: category,
+  description: CATEGORY_DESCRIPTIONS[category],
+  images: IMAGES.filter((image) => image.category === category),
+}))
 
 export default function GalleryPage() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
@@ -108,32 +123,42 @@ export default function GalleryPage() {
         imageSrc={coverPhoto}
       />
 
-      <section className="px-6 py-28 lg:px-10 lg:py-36">
-        <div className="mx-auto max-w-7xl columns-2 gap-4 sm:columns-3 lg:columns-4">
-          {IMAGES.map((image, index) => (
-            <button
-              key={image.src}
-              type="button"
-              onClick={() => setActiveIndex(index)}
-              aria-label={`Agrandir : ${image.alt}`}
-              className="group relative mb-4 block w-full break-inside-avoid overflow-hidden rounded-[18px] shadow-[0_20px_45px_-20px_rgba(18,53,36,0.35)]"
-            >
-              <img
-                src={image.src}
-                alt={image.alt}
-                width={image.width}
-                height={image.height}
-                className="w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                loading="lazy"
-                decoding="async"
-              />
-              <span className="pointer-events-none absolute inset-0 flex items-end bg-gradient-to-t from-ink-950/70 via-ink-950/0 to-ink-950/0 p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                <span className="text-sm font-medium text-paper-50">{image.category}</span>
-              </span>
-            </button>
-          ))}
-        </div>
-      </section>
+      {CATEGORIES.map((cat, catIndex) => (
+        <section
+          key={cat.title}
+          className={`px-6 py-16 lg:px-10 lg:py-20 ${catIndex % 2 === 1 ? 'bg-paper-100' : ''} ${
+            catIndex === 0 ? 'pt-28 lg:pt-36' : ''
+          } ${catIndex === CATEGORIES.length - 1 ? 'pb-28 lg:pb-36' : ''}`}
+        >
+          <div className="mx-auto max-w-7xl">
+            <h2 className="font-display text-2xl font-bold text-ink-950 sm:text-3xl">{cat.title}</h2>
+            <p className="mt-3 max-w-2xl text-base leading-relaxed text-ink-700">{cat.description}</p>
+
+            <div className="mt-8 columns-2 gap-4 sm:columns-3 lg:columns-4">
+              {cat.images.map((image) => (
+                <button
+                  key={image.src}
+                  type="button"
+                  onClick={() => setActiveIndex(IMAGES.indexOf(image))}
+                  aria-label={`Agrandir : ${image.alt}`}
+                  className="group relative mb-4 block w-full break-inside-avoid overflow-hidden rounded-[18px] shadow-[0_20px_45px_-20px_rgba(18,53,36,0.35)]"
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    width={image.width}
+                    height={image.height}
+                    className="w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span className="pointer-events-none absolute inset-0 bg-ink-950/0 transition-colors duration-300 group-hover:bg-ink-950/10" />
+                </button>
+              ))}
+            </div>
+          </div>
+        </section>
+      ))}
 
       <AnimatePresence>
         {activeIndex !== null && (
