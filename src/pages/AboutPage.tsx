@@ -44,7 +44,10 @@ export default function AboutPage() {
             src={aboutParcoursPhoto}
             alt="Producteur partenaire d'IBL Primeurs dans son champ au Sénégal"
             className="aspect-[4/3] w-full order-last rounded-[22px] object-cover shadow-[0_20px_45px_-20px_rgba(18,53,36,0.35)] lg:order-first"
-            loading="lazy"
+            width={1200}
+            height={1200}
+            loading="eager"
+            fetchPriority="high"
             decoding="async"
           />
           <div>
