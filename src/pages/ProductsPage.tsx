@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import PageHero from '../components/PageHero'
 import CTA from '../components/CTA'
 import manguePhoto from '../assets/images/page-produits-mangue.webp'
-import mangueAmeliePhoto from '../assets/images/page-produits-mangue-amelie.webp'
+import manguePalettePhoto from '../assets/images/gallery-maroc-mangue-07.webp'
 import haricotVertPhoto from '../assets/images/page-produits-haricot-vert.webp'
 import gomboPhoto from '../assets/images/page-produits-gombo.webp'
 import pimentPhoto from '../assets/images/page-produits-piment.webp'
@@ -19,11 +19,11 @@ import { useSEO } from '../lib/useSEO'
 const PRODUCTS = [
   {
     name: 'Mangue',
-    photo: mangueAmeliePhoto,
+    photo: manguePalettePhoto,
     tagline: 'Une mangue reconnue pour sa qualité et sa tenue au transport.',
     description: 'Nos mangues sont soigneusement sélectionnées et préparées pour répondre aux exigences des marchés internationaux, avec une attention particulière portée à la fraîcheur, au calibre et à la présentation.',
     meta: [
-      { label: 'Variétés disponibles', value: 'Kent • Keitt • Springfields • Palmers • Osteen • Amélie' },
+      { label: 'Variétés disponibles', value: 'Kent • Keitt • Springfields • Palmers • Osteen' },
       { label: 'Origine', value: "Sénégal, Burkina Faso, Mali, Côte d'Ivoire" },
       { label: 'Disponibilité', value: 'Mars – Août' },
     ],
