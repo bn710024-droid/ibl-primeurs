@@ -12,6 +12,7 @@ import auberginePhoto from '../assets/images/page-produits-aubergine.webp'
 import poivronPhoto from '../assets/images/page-produits-poivron.webp'
 import oignonPhoto from '../assets/images/page-produits-oignon.webp'
 import concombrePhoto from '../assets/images/page-produits-concombre.webp'
+import ananasPhoto from '../assets/images/page-produits-ananas.webp'
 import coverPhoto from '../assets/images/cover-produits-pineapple.webp'
 import { useSEO } from '../lib/useSEO'
 
@@ -100,6 +101,13 @@ const PRODUCTS = [
     tagline: 'Un concombre frais et croquant, cueilli à bonne maturité.',
     description: "Nos concombres sont récoltés avec soin afin de préserver leur fraîcheur et leur qualité jusqu'à l'expédition.",
     meta: [],
+  },
+  {
+    name: 'Ananas',
+    photo: ananasPhoto,
+    tagline: 'Un ananas sucré et parfumé, sélectionné pour l’export.',
+    description: "Nos ananas sont récoltés à bonne maturité et conditionnés avec soin pour garantir fraîcheur et qualité jusqu'à destination.",
+    meta: [{ label: 'Origine', value: "Côte d'Ivoire" }],
   },
 ]
 

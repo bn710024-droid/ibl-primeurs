@@ -16,6 +16,7 @@ const PRODUCT_OPTIONS = [
   'Poivron',
   'Oignon',
   'Concombre',
+  'Ananas',
   'Autre',
 ]
 
@@ -68,7 +69,7 @@ const INFO_CARDS = [
 
 const FAQ = [
   { question: 'Quels pays livrez-vous ?', answer: 'Nous accompagnons des partenaires en Europe, au Maghreb et en Afrique de l’Ouest selon les besoins de chaque projet.' },
-  { question: 'Quels produits exportez-vous ?', answer: 'Mangues, haricots verts, gombo, piments, citrons et limes, tomates, aubergines, poivrons, oignons et concombres.' },
+  { question: 'Quels produits exportez-vous ?', answer: 'Mangues, haricots verts, gombo, piments, citrons et limes, tomates, aubergines, poivrons, oignons, concombres et ananas.' },
   { question: 'Comment obtenir un devis ?', answer: 'Complétez le formulaire ou contactez directement notre équipe. Nous reviendrons vers vous dans les meilleurs délais.' },
   { question: 'Acceptez-vous de nouveaux partenaires ?', answer: 'Oui. Chaque demande est étudiée afin de proposer une solution adaptée à vos besoins.' },
 ]

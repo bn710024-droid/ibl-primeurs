@@ -29,6 +29,20 @@ import marocMangue04 from '../assets/images/gallery-maroc-mangue-04.webp'
 import marocMangue05 from '../assets/images/gallery-maroc-mangue-05.webp'
 import marocMangue06 from '../assets/images/gallery-maroc-mangue-06.webp'
 import marocMangue07 from '../assets/images/gallery-maroc-mangue-07.webp'
+import ananas01 from '../assets/images/gallery-ananas-01.webp'
+import ananas02 from '../assets/images/gallery-ananas-02.webp'
+import ananas03 from '../assets/images/gallery-ananas-03.webp'
+import ananas04 from '../assets/images/gallery-ananas-04.webp'
+import ananas05 from '../assets/images/gallery-ananas-05.webp'
+import ananas06 from '../assets/images/gallery-ananas-06.webp'
+import ananas07 from '../assets/images/gallery-ananas-07.webp'
+import ananas08 from '../assets/images/gallery-ananas-08.webp'
+import legumeTomate01 from '../assets/images/gallery-tomate-01.webp'
+import legumeTomate02 from '../assets/images/gallery-tomate-02.webp'
+import legumeTomate03 from '../assets/images/gallery-tomate-03.webp'
+import legumeTomate04 from '../assets/images/gallery-tomate-04.webp'
+import legumePoivron01 from '../assets/images/gallery-poivron-01.webp'
+import legumeAubergine01 from '../assets/images/gallery-aubergine-01.webp'
 import coverPhoto from '../assets/images/cover-apropos-mangotree.webp'
 
 interface GalleryImage {
@@ -46,6 +60,8 @@ const CATEGORY_DESCRIPTIONS: Record<string, string> = {
   'Nos produits': "Un aperçu de nos fruits et légumes frais préparés pour l'export.",
   'Union européenne': "Nos mangues conditionnées, calibrées et contrôlées pour l'expédition vers le marché européen.",
   'Maroc': "Nos mangues préparées et conditionnées pour l'export vers le marché marocain.",
+  'Ananas': "Nos ananas de Côte d'Ivoire, récoltés et conditionnés avec soin pour l'export.",
+  'Légumes': 'Tomates, aubergines et poivrons cultivés par nos producteurs partenaires.',
 }
 
 const IMAGES: GalleryImage[] = [
@@ -74,6 +90,20 @@ const IMAGES: GalleryImage[] = [
   { src: marocMangue05, alt: 'Rangée de cartons de mangues prêts pour export vers le Maroc', category: 'Maroc', width: 960, height: 1280 },
   { src: marocMangue06, alt: 'Cartons de mangues conditionnés pour le marché marocain', category: 'Maroc', width: 1200, height: 900 },
   { src: marocMangue07, alt: 'Cartons de mangues sur palette prêts pour expédition vers le Maroc', category: 'Maroc', width: 1200, height: 900 },
+  { src: ananas01, alt: 'Cartons d’ananas conditionnés pour export', category: 'Ananas', width: 1080, height: 608 },
+  { src: ananas02, alt: 'Ananas triés et calibrés en carton', category: 'Ananas', width: 1080, height: 608 },
+  { src: ananas03, alt: 'Carton d’ananas prêt pour expédition', category: 'Ananas', width: 608, height: 1080 },
+  { src: ananas04, alt: 'Cartons d’ananas empilés sur palette bois', category: 'Ananas', width: 608, height: 1080 },
+  { src: ananas05, alt: 'Ananas fraîchement récoltés côte à côte', category: 'Ananas', width: 1080, height: 608 },
+  { src: ananas06, alt: 'Sélection d’ananas de différents calibres', category: 'Ananas', width: 1080, height: 608 },
+  { src: ananas07, alt: 'Gros plan sur un ananas prêt pour export', category: 'Ananas', width: 1080, height: 608 },
+  { src: ananas08, alt: 'Ananas contrôlés avant conditionnement', category: 'Ananas', width: 1080, height: 608 },
+  { src: legumeTomate01, alt: 'Tomates vertes en cours de maturation sur pied', category: 'Légumes', width: 960, height: 1280 },
+  { src: legumeTomate02, alt: 'Tomates fraîchement récoltées', category: 'Légumes', width: 960, height: 1280 },
+  { src: legumeTomate03, alt: 'Tomates mûres sur pied', category: 'Légumes', width: 360, height: 480 },
+  { src: legumeTomate04, alt: 'Tomates en cours de maturation en serre', category: 'Légumes', width: 720, height: 1280 },
+  { src: legumePoivron01, alt: 'Poivrons rouges cultivés par nos producteurs partenaires', category: 'Légumes', width: 1063, height: 990 },
+  { src: legumeAubergine01, alt: 'Aubergines en cours de récolte', category: 'Légumes', width: 520, height: 1152 },
 ]
 
 const CATEGORIES = Array.from(new Set(IMAGES.map((image) => image.category))).map((category) => ({

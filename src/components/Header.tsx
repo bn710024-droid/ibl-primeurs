@@ -43,7 +43,7 @@ export default function Header() {
           IBL <span className="text-clay-500">Primeurs</span>
         </Link>
 
-        <nav className="hidden items-center gap-9 lg:flex">
+        <nav className="hidden items-center gap-6 md:flex xl:gap-9">
           {NAV_LINKS.map((link) => {
             const isActive = link.to === '/' ? pathname === '/' : pathname.startsWith(link.to)
             return (
@@ -66,7 +66,7 @@ export default function Header() {
           })}
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="hidden md:block">
           <Link
             to="/contact#devis"
             className={`rounded-lg border px-6 py-2.5 text-sm font-semibold transition-colors duration-200 ${
@@ -82,7 +82,7 @@ export default function Header() {
         <button
           type="button"
           onClick={() => setIsMenuOpen((v) => !v)}
-          className={`flex flex-col gap-1.5 p-2 lg:hidden ${isScrolled ? 'text-ink-950' : 'text-paper-50'}`}
+          className={`flex flex-col gap-1.5 p-2 md:hidden ${isScrolled ? 'text-ink-950' : 'text-paper-50'}`}
           aria-label={isMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
           aria-expanded={isMenuOpen}
         >
@@ -93,7 +93,7 @@ export default function Header() {
       </div>
 
       {isMenuOpen && (
-        <div className="border-t border-ink-950/10 bg-paper-50 px-6 py-6 lg:hidden">
+        <div className="border-t border-ink-950/10 bg-paper-50 px-6 py-6 md:hidden">
           <nav className="flex flex-col gap-4">
             {NAV_LINKS.map((link) => (
               <Link key={link.to} to={link.to} className="text-base font-medium text-ink-700">
