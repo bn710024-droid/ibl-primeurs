@@ -3,7 +3,6 @@ import { useSearchParams } from 'react-router-dom'
 import PageHero from '../components/PageHero'
 import coverPhoto from '../assets/images/cover-contact-watermelon.webp'
 import { useSEO } from '../lib/useSEO'
-import { submitQuoteRequest } from '../lib/quoteRequest'
 
 const PRODUCT_OPTIONS = [
   'Mangue',
@@ -110,8 +109,27 @@ export default function ContactPage() {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    await submitQuoteRequest({ ...formData, products })
-    setIsSubmitted(true)
+    try {
+      const response = await fetch('/api/send-contact-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nom: formData.name,
+          email: formData.email,
+          telephone: formData.phone,
+          produit: products.length > 0 ? products.join(', ') : 'Autre',
+          message: formData.message,
+        }),
+      })
+      if (response.ok) {
+        setIsSubmitted(true)
+      } else {
+        alert('Erreur lors de l\'envoi. Veuillez réessayer.')
+      }
+    } catch (error) {
+      console.error('Submit error:', error)
+      alert('Erreur de connexion. Veuillez vérifier votre internet.')
+    }
   }
 
   return (
