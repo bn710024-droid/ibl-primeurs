@@ -7,21 +7,15 @@ import haricotVertPhoto from '../assets/images/page-produits-haricot-vert.webp'
 import gomboPhoto from '../assets/images/page-produits-gombo.webp'
 import pimentPhoto from '../assets/images/page-produits-piment.webp'
 import citronsLimesPhoto from '../assets/images/page-produits-citrons-limes.webp'
+import tomatePhoto from '../assets/images/page-produits-tomate.webp'
+import auberginePhoto from '../assets/images/page-produits-aubergine.webp'
+import poivronPhoto from '../assets/images/page-produits-poivron.webp'
+import oignonPhoto from '../assets/images/page-produits-oignon.webp'
+import concombrePhoto from '../assets/images/page-produits-concombre.webp'
 import coverPhoto from '../assets/images/cover-produits-pineapple.webp'
 import { useSEO } from '../lib/useSEO'
 
 const PRODUCTS = [
-  {
-    name: 'Mangue avion de haute qualité',
-    quoteLabel: 'Mangue',
-    photo: manguePhoto,
-    tagline: 'Une mangue reconnue pour sa qualité et sa tenue au transport.',
-    description: 'Nos mangues sont soigneusement sélectionnées et préparées pour répondre aux exigences des marchés internationaux, avec une attention particulière portée à la fraîcheur, au calibre et à la présentation.',
-    meta: [
-      { label: 'Variétés disponibles', value: 'Kent • Keitt • Springfields' },
-      { label: 'Disponibilité', value: 'Mars – Août' },
-    ],
-  },
   {
     name: 'Mangue',
     photo: manguePalettePhoto,
@@ -30,6 +24,17 @@ const PRODUCTS = [
     meta: [
       { label: 'Variétés disponibles', value: 'Kent • Keitt • Springfields • Palmers • Osteen' },
       { label: 'Origine', value: "Sénégal, Burkina Faso, Mali, Côte d'Ivoire" },
+      { label: 'Disponibilité', value: 'Mars – Août' },
+    ],
+  },
+  {
+    name: 'Mangue avion de haute qualité',
+    quoteLabel: 'Mangue',
+    photo: manguePhoto,
+    tagline: 'Une mangue reconnue pour sa qualité et sa tenue au transport.',
+    description: 'Nos mangues sont soigneusement sélectionnées et préparées pour répondre aux exigences des marchés internationaux, avec une attention particulière portée à la fraîcheur, au calibre et à la présentation.',
+    meta: [
+      { label: 'Variétés disponibles', value: 'Kent • Keitt • Springfields' },
       { label: 'Disponibilité', value: 'Mars – Août' },
     ],
   },
@@ -61,6 +66,41 @@ const PRODUCTS = [
     description: 'Nos citrons et limes sont sélectionnés pour leur excellente tenue au transport et leur qualité constante.',
     meta: [],
   },
+  {
+    name: 'Tomate',
+    photo: tomatePhoto,
+    tagline: 'Une tomate charnue, sélectionnée pour sa fermeté et sa couleur.',
+    description: 'Nos tomates sont récoltées à bonne maturité et triées avec soin pour répondre aux exigences de fraîcheur et de présentation des marchés internationaux.',
+    meta: [],
+  },
+  {
+    name: 'Aubergine',
+    photo: auberginePhoto,
+    tagline: 'Une aubergine à la peau lisse et brillante, gage de fraîcheur.',
+    description: "Nos aubergines sont sélectionnées pour leur fermeté et leur belle coloration, préparées selon les standards d'exportation.",
+    meta: [],
+  },
+  {
+    name: 'Poivron',
+    photo: poivronPhoto,
+    tagline: 'Un poivron charnu et coloré, apprécié pour sa qualité constante.',
+    description: "Nos poivrons sont récoltés à maturité et conditionnés avec soin pour garantir fraîcheur et tenue jusqu'à destination.",
+    meta: [],
+  },
+  {
+    name: 'Oignon',
+    photo: oignonPhoto,
+    tagline: 'Un oignon rouge robuste, réputé pour sa bonne conservation.',
+    description: 'Nos oignons sont sélectionnés pour leur calibre homogène et leur excellente tenue au transport et au stockage.',
+    meta: [],
+  },
+  {
+    name: 'Concombre',
+    photo: concombrePhoto,
+    tagline: 'Un concombre frais et croquant, cueilli à bonne maturité.',
+    description: "Nos concombres sont récoltés avec soin afin de préserver leur fraîcheur et leur qualité jusqu'à l'expédition.",
+    meta: [],
+  },
 ]
 
 const REASONS = [
@@ -74,9 +114,9 @@ const REASONS = [
 
 export default function ProductsPage() {
   useSEO({
-    title: 'Nos produits — Mangue, haricot vert, gombo, piment',
+    title: 'Nos produits — Mangue, tomate, aubergine, poivron et plus',
     description:
-      "Découvrez la sélection de fruits et légumes frais d'IBL Primeurs : mangues, haricots verts, gombo, piments, citrons et limes, préparés pour l'export international.",
+      "Découvrez la sélection de fruits et légumes frais d'IBL Primeurs : mangues, haricots verts, gombo, piments, citrons et limes, tomates, aubergines, poivrons, oignons et concombres, préparés pour l'export international.",
     path: '/produits',
     image: coverPhoto,
   })
