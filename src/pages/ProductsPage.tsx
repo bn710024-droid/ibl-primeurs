@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import PageHero from '../components/PageHero'
 import CTA from '../components/CTA'
-import mangueEuropePhoto from '../assets/images/gallery-eu-mangue-04.webp'
+import mangueEuropePhoto from '../assets/images/gallery-eu-mangue-07.webp'
 import mangueAvionPhoto from '../assets/images/page-produits-mangue-avion.webp'
 import haricotVertPhoto from '../assets/images/page-produits-haricot-vert.webp'
 import gomboPhoto from '../assets/images/page-produits-gombo.webp'
