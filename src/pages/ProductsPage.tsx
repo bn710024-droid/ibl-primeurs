@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import PageHero from '../components/PageHero'
 import CTA from '../components/CTA'
 import manguePhoto from '../assets/images/page-produits-mangue.webp'
+import manguePalettePhoto from '../assets/images/gallery-maroc-mangue-07.webp'
 import haricotVertPhoto from '../assets/images/page-produits-haricot-vert.webp'
 import gomboPhoto from '../assets/images/page-produits-gombo.webp'
 import pimentPhoto from '../assets/images/page-produits-piment.webp'
@@ -11,12 +12,24 @@ import { useSEO } from '../lib/useSEO'
 
 const PRODUCTS = [
   {
-    name: 'Mangue',
+    name: 'Mangue avion de haute qualité',
+    quoteLabel: 'Mangue',
     photo: manguePhoto,
     tagline: 'Une mangue reconnue pour sa qualité et sa tenue au transport.',
     description: 'Nos mangues sont soigneusement sélectionnées et préparées pour répondre aux exigences des marchés internationaux, avec une attention particulière portée à la fraîcheur, au calibre et à la présentation.',
     meta: [
       { label: 'Variétés disponibles', value: 'Kent • Keitt • Springfields' },
+      { label: 'Disponibilité', value: 'Mars – Août' },
+    ],
+  },
+  {
+    name: 'Mangue',
+    photo: manguePalettePhoto,
+    tagline: 'Une mangue reconnue pour sa qualité et sa tenue au transport.',
+    description: 'Nos mangues sont soigneusement sélectionnées et préparées pour répondre aux exigences des marchés internationaux, avec une attention particulière portée à la fraîcheur, au calibre et à la présentation.',
+    meta: [
+      { label: 'Variétés disponibles', value: 'Kent • Keitt • Springfields • Palmers • Osteen' },
+      { label: 'Origine', value: "Sénégal, Burkina Faso, Mali, Côte d'Ivoire" },
       { label: 'Disponibilité', value: 'Mars – Août' },
     ],
   },
@@ -83,8 +96,8 @@ export default function ProductsPage() {
             {PRODUCTS.map((product, index) => (
               <div
                 key={product.name}
-                className={`grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-14 ${
-                  index % 2 === 1 ? 'lg:[&>*:first-child]:order-last' : ''
+                className={`grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-14 ${
+                  index % 2 === 1 ? 'md:[&>*:first-child]:order-last' : ''
                 }`}
               >
                 <img
@@ -113,7 +126,7 @@ export default function ProductsPage() {
                     </div>
                   )}
                   <Link
-                    to={`/contact?produit=${encodeURIComponent(product.name)}#devis`}
+                    to={`/contact?produit=${encodeURIComponent(product.quoteLabel ?? product.name)}#devis`}
                     className="mt-6 inline-flex rounded-lg border border-ink-950 px-6 py-3 text-sm font-semibold text-ink-950 transition-colors hover:bg-ink-950 hover:text-paper-50"
                   >
                     Demander la fiche technique
