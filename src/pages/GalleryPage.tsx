@@ -43,6 +43,8 @@ import legumeTomate03 from '../assets/images/gallery-tomate-03.webp'
 import legumeTomate04 from '../assets/images/gallery-tomate-04.webp'
 import legumePoivron01 from '../assets/images/gallery-poivron-01.webp'
 import legumeAubergine01 from '../assets/images/gallery-aubergine-01.webp'
+import mangueAmelie01 from '../assets/images/page-produits-mangue-amelie.webp'
+import mangueAmelie02 from '../assets/images/gallery-mangue-amelie-02.webp'
 import coverPhoto from '../assets/images/cover-apropos-mangotree.webp'
 
 interface GalleryImage {
@@ -62,6 +64,7 @@ const CATEGORY_DESCRIPTIONS: Record<string, string> = {
   'Maroc': "Nos mangues préparées et conditionnées pour l'export vers le marché marocain.",
   'Ananas': "Nos ananas de Côte d'Ivoire, récoltés et conditionnés avec soin pour l'export.",
   'Légumes': 'Tomates, aubergines et poivrons cultivés par nos producteurs partenaires.',
+  'Mangue Amélie': 'La variété Amélie, reconnaissable à sa chair verte et sa forme allongée.',
 }
 
 const IMAGES: GalleryImage[] = [
@@ -104,6 +107,8 @@ const IMAGES: GalleryImage[] = [
   { src: legumeTomate04, alt: 'Tomates en cours de maturation en serre', category: 'Légumes', width: 720, height: 1280 },
   { src: legumePoivron01, alt: 'Poivrons rouges cultivés par nos producteurs partenaires', category: 'Légumes', width: 1063, height: 990 },
   { src: legumeAubergine01, alt: 'Aubergines en cours de récolte', category: 'Légumes', width: 520, height: 1152 },
+  { src: mangueAmelie01, alt: 'Cartons de mangues variété Amélie', category: 'Mangue Amélie', width: 810, height: 1080 },
+  { src: mangueAmelie02, alt: 'Mangues Amélie triées en carton', category: 'Mangue Amélie', width: 810, height: 1080 },
 ]
 
 const CATEGORIES = Array.from(new Set(IMAGES.map((image) => image.category))).map((category) => ({
