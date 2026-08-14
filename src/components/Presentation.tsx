@@ -15,7 +15,7 @@ export default function Presentation() {
         <img
           src={presentationPhoto}
           alt="Producteur partenaire d'IBL Primeurs récoltant des haricots verts"
-          className="relative z-10 aspect-[3/4] w-full rounded-[22px] object-cover shadow-[0_20px_45px_-20px_rgba(18,53,36,0.35)] lg:-mt-28 lg:aspect-[4/3]"
+          className="relative z-10 aspect-[3/4] w-full rounded-[22px] object-cover object-top shadow-[0_20px_45px_-20px_rgba(18,53,36,0.35)] lg:-mt-28 lg:aspect-[4/3]"
           width={1280}
           height={1707}
           loading="lazy"

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import PageHero from '../components/PageHero'
 import CTA from '../components/CTA'
-import manguePhoto from '../assets/images/page-produits-mangue.webp'
+import mangueEuropePhoto from '../assets/images/gallery-eu-mangue-04.webp'
 import manguePalettePhoto from '../assets/images/gallery-maroc-mangue-07.webp'
 import haricotVertPhoto from '../assets/images/page-produits-haricot-vert.webp'
 import gomboPhoto from '../assets/images/page-produits-gombo.webp'
@@ -31,7 +31,7 @@ const PRODUCTS = [
   {
     name: 'Mangue avion de haute qualité',
     quoteLabel: 'Mangue',
-    photo: manguePhoto,
+    photo: mangueEuropePhoto,
     tagline: 'Une mangue reconnue pour sa qualité et sa tenue au transport.',
     description: 'Nos mangues sont soigneusement sélectionnées et préparées pour répondre aux exigences des marchés internationaux, avec une attention particulière portée à la fraîcheur, au calibre et à la présentation.',
     meta: [
