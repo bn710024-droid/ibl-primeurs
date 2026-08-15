@@ -100,6 +100,7 @@ export default function ContactPage() {
   })
   const [products, setProducts] = useState<string[]>(() => (hasPreselectedProduct ? [preselectedProduct!] : []))
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [website, setWebsite] = useState('')
 
   const toggleProduct = (product: string) => {
     setProducts((current) =>
@@ -109,6 +110,11 @@ export default function ContactPage() {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+    if (website) {
+      // Honeypot rempli : probablement un bot, on ignore silencieusement.
+      setIsSubmitted(true)
+      return
+    }
     try {
       const response = await fetch('/api/send-contact-email', {
         method: 'POST',
@@ -119,6 +125,7 @@ export default function ContactPage() {
           telephone: formData.phone,
           produit: products.length > 0 ? products.join(', ') : 'Autre',
           message: formData.message,
+          website,
         }),
       })
       if (response.ok) {
@@ -199,6 +206,18 @@ export default function ContactPage() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
+              <div className="absolute left-[-9999px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+                <label htmlFor="website">Site web</label>
+                <input
+                  id="website"
+                  name="website"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={website}
+                  onChange={(e) => setWebsite(e.target.value)}
+                />
+              </div>
               <div className="flex flex-col gap-2">
                 <label htmlFor="name" className="text-xs font-semibold uppercase tracking-wider text-ink-500">
                   Nom complet
