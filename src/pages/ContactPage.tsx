@@ -5,7 +5,7 @@ import PageHero from '../components/PageHero'
 import coverPhoto from '../assets/images/cover-contact-watermelon.webp'
 import { useSEO } from '../lib/useSEO'
 
-const TURNSTILE_SITE_KEY = '0x4AAAAAAAEQuhf7-toLNh2WF'
+const TURNSTILE_SITE_KEY = '0x4AAAAAAEQuhf7-toLNh2WF'
 
 const PRODUCT_OPTIONS = [
   'Mangue',
