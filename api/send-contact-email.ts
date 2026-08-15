@@ -20,29 +20,48 @@ function escapeHtml(text: string): string {
 
 const requestLog = new Map<string, number[]>()
 const RATE_LIMIT_WINDOW_MS = 60_000
-const RATE_LIMIT_MAX_REQUESTS = 5
+const RATE_LIMIT_MAX_REQUESTS = 3
 
 function isRateLimited(ip: string): boolean {
   const now = Date.now()
   const timestamps = (requestLog.get(ip) ?? []).filter((t) => now - t < RATE_LIMIT_WINDOW_MS)
   timestamps.push(now)
   requestLog.set(ip, timestamps)
+  if (requestLog.size > 5000) {
+    // Évite une fuite mémoire non bornée sur une instance longue durée.
+    requestLog.clear()
+  }
   return timestamps.length > RATE_LIMIT_MAX_REQUESTS
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
+  res.setHeader('Cache-Control', 'no-store')
+
+  if (req.method === 'OPTIONS') {
+    return res.status(204).end()
+  }
+
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
   const origin = req.headers.origin
-  if (origin && !ALLOWED_ORIGINS.includes(origin)) {
+  if (!origin || !ALLOWED_ORIGINS.includes(origin)) {
     return res.status(403).json({ error: 'Forbidden' })
+  }
+
+  const contentType = req.headers['content-type'] || ''
+  if (!contentType.includes('application/json')) {
+    return res.status(415).json({ error: 'Unsupported content type' })
   }
 
   const ip = (req.headers['x-forwarded-for'] as string)?.split(',')[0]?.trim() || req.socket.remoteAddress || 'unknown'
   if (isRateLimited(ip)) {
     return res.status(429).json({ error: 'Too many requests' })
+  }
+
+  if (!req.body || typeof req.body !== 'object') {
+    return res.status(400).json({ error: 'Invalid request body' })
   }
 
   const { produit, nom, email, telephone, message, website } = req.body
