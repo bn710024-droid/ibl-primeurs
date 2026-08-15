@@ -1,8 +1,11 @@
 import { useState, type FormEvent } from 'react'
 import { useSearchParams } from 'react-router-dom'
+import { Turnstile } from '@marsidev/react-turnstile'
 import PageHero from '../components/PageHero'
 import coverPhoto from '../assets/images/cover-contact-watermelon.webp'
 import { useSEO } from '../lib/useSEO'
+
+const TURNSTILE_SITE_KEY = '0x4AAAAAAAEQuhf7-toLNh2WF'
 
 const PRODUCT_OPTIONS = [
   'Mangue',
@@ -101,6 +104,8 @@ export default function ContactPage() {
   const [products, setProducts] = useState<string[]>(() => (hasPreselectedProduct ? [preselectedProduct!] : []))
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [website, setWebsite] = useState('')
+  const [turnstileToken, setTurnstileToken] = useState('')
+  const [submitError, setSubmitError] = useState('')
 
   const toggleProduct = (product: string) => {
     setProducts((current) =>
@@ -110,9 +115,14 @@ export default function ContactPage() {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+    setSubmitError('')
     if (website) {
       // Honeypot rempli : probablement un bot, on ignore silencieusement.
       setIsSubmitted(true)
+      return
+    }
+    if (!turnstileToken) {
+      setSubmitError('Merci de valider la vérification de sécurité avant d\'envoyer.')
       return
     }
     try {
@@ -126,16 +136,17 @@ export default function ContactPage() {
           produit: products.length > 0 ? products.join(', ') : 'Autre',
           message: formData.message,
           website,
+          turnstileToken,
         }),
       })
       if (response.ok) {
         setIsSubmitted(true)
       } else {
-        alert('Erreur lors de l\'envoi. Veuillez réessayer.')
+        setSubmitError('Erreur lors de l\'envoi. Veuillez réessayer.')
       }
     } catch (error) {
       console.error('Submit error:', error)
-      alert('Erreur de connexion. Veuillez vérifier votre internet.')
+      setSubmitError('Erreur de connexion. Veuillez vérifier votre internet.')
     }
   }
 
@@ -340,6 +351,19 @@ export default function ContactPage() {
                   className="rounded-lg border border-ink-950/15 bg-paper-50 px-4 py-3 text-base text-ink-950 outline-none transition-colors focus:border-clay-500"
                 />
               </div>
+
+              <div className="sm:col-span-2">
+                <Turnstile
+                  siteKey={TURNSTILE_SITE_KEY}
+                  onSuccess={(token) => setTurnstileToken(token)}
+                  onExpire={() => setTurnstileToken('')}
+                  onError={() => setTurnstileToken('')}
+                />
+              </div>
+
+              {submitError && (
+                <p className="text-sm font-medium text-red-600 sm:col-span-2">{submitError}</p>
+              )}
 
               <div className="sm:col-span-2">
                 <button

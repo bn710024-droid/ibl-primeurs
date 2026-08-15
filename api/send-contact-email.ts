@@ -7,6 +7,25 @@ const ALLOWED_ORIGINS = ['https://iblprimeurs.com', 'https://www.iblprimeurs.com
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const MAX_LENGTHS = { nom: 100, email: 150, telephone: 30, produit: 200, message: 3000 }
 
+async function verifyTurnstile(token: string, ip: string): Promise<boolean> {
+  try {
+    const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        secret: process.env.TURNSTILE_SECRET_KEY,
+        response: token,
+        remoteip: ip,
+      }),
+    })
+    const data = await response.json()
+    return data.success === true
+  } catch (error) {
+    console.error('Turnstile verification error:', error)
+    return false
+  }
+}
+
 function escapeHtml(text: string): string {
   const map: Record<string, string> = {
     '&': '&amp;',
@@ -64,7 +83,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(400).json({ error: 'Invalid request body' })
   }
 
-  const { produit, nom, email, telephone, message, website } = req.body
+  const { produit, nom, email, telephone, message, website, turnstileToken } = req.body
 
   if (website) {
     // Honeypot rempli par un bot : on répond succès sans rien envoyer.
@@ -73,6 +92,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   if (!nom || !email || !message) {
     return res.status(400).json({ error: 'Missing required fields' })
+  }
+
+  if (!turnstileToken || typeof turnstileToken !== 'string') {
+    return res.status(400).json({ error: 'Missing security verification' })
+  }
+
+  const isHuman = await verifyTurnstile(turnstileToken, ip)
+  if (!isHuman) {
+    return res.status(403).json({ error: 'Security verification failed' })
   }
 
   if (typeof nom !== 'string' || typeof email !== 'string' || typeof message !== 'string') {
